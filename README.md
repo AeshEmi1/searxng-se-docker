@@ -16,11 +16,12 @@ SearXNG-SE is recommended for more advanced users that already have their own re
 2. Get searxng-se-docker
   ```sh
   cd /usr/local
-  git clone https://github.com/aeshemi1/searxng-se-docker.git
-  cd searxng-docker
+  git clone https://github.com/AeshEmi1/searxng-se-docker.git
+  cd searxng-se-docker
   ```
 3. Generate the secret key `sed -i "s|ultrasecretkey|$(openssl rand -hex 32)|g" searxng/settings.yml`
-4. Edit [searxng/settings.yml](https://github.com/searxng/searxng-docker/blob/master/searxng/settings.yml) according to your needs
+4. Add your private key and public certificate under searxng/certs with the file name searxng.key and searxng.crt respectively.
+5. Edit [searxng/settings.yml](https://github.com/AeshEmi1/searxng-se-docker/blob/master/searxng/settings.yml) according to your needs
 
 > [!NOTE]
 > On the first run, you must remove `cap_drop: - ALL` from the `docker-compose.yaml` file for the `searxng` service to successfully create `/etc/searxng/uwsgi.ini`. This is necessary because the `cap_drop: - ALL` directive removes all capabilities, including those required for the creation of the `uwsgi.ini` file. After the first run, you should re-add `cap_drop: - ALL` to the `docker-compose.yaml` file for security reasons.
