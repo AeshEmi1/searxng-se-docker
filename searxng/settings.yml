@@ -5,6 +5,8 @@ server:
   secret_key: "ultrasecretkey"  # change this!
   limiter: false
   image_proxy: true
+  certificate_path: "certs/searxng.crt"
+  certificate_key_path: "certs/searxng.key"
 ui:
   static_use_hash: true
 redis:
