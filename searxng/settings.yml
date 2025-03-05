@@ -1,4 +1,4 @@
-# see https://docs.searxng.org/admin/settings/settings.html#settings-use-default-settings
+# see https://aeshemi1.github.io/searxng-se/admin/settings/settings.html#settings-use-default-settings
 use_default_settings: true
 server:
   # base_url is defined in the SEARXNG_BASE_URL environment variable, see .env and docker-compose.yml
