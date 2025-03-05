@@ -10,7 +10,7 @@ Create a new SearXNG-SE instance in five minutes using Docker
 | [Valkey](https://github.com/valkey-io/valkey) | In-memory database                                             | [docker.io/valkey/valkey:8-alpine](https://hub.docker.com/r/valkey/valkey)        | [Dockerfile](https://github.com/valkey-io/valkey-container/blob/mainline/Dockerfile.template)             |
 
 ## How to use it
-SearXNG-SE is recommended for more advanced users that already have their own reverse proxy (e.g. Nginx, HAProxy, ...) and probably some other services running on their machine.
+SearXNG-SE is recommended for more advanced users that already have their own reverse proxy (e.g. Nginx, HAProxy, ...).
 
 1. [Install docker](https://docs.docker.com/install/)
 2. Get searxng-se-docker
