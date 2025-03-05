@@ -24,7 +24,7 @@ services:
 
   searxng:
     container_name: searxng-se
-    image: docker.io/AeshEmi1/searxng-se:latest
+    image: docker.io/aeshemi1/searxng-se:latest
     restart: unless-stopped
     networks:
       - searxng
