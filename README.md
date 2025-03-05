@@ -1,28 +1,26 @@
 # searxng-docker
 
-Create a new SearXNG instance in five minutes using Docker
+Create a new SearXNG-SE instance in five minutes using Docker
 
 ## What is included?
 
 | Name | Description | Docker image | Dockerfile |
 | -- | -- | -- | -- |
-| [Caddy](https://github.com/caddyserver/caddy) | Reverse proxy (create a LetsEncrypt certificate automatically) | [docker.io/library/caddy:2-alpine](https://hub.docker.com/_/caddy)           | [Dockerfile](https://github.com/caddyserver/caddy-docker/blob/master/Dockerfile.tmpl) |
-| [SearXNG](https://github.com/searxng/searxng) | SearXNG by itself                                              | [docker.io/searxng/searxng:latest](https://hub.docker.com/r/searxng/searxng) | [Dockerfile](https://github.com/searxng/searxng/blob/master/Dockerfile)               |
+| [SearXNG-SE](https://github.com/AeshEmi1/searxng-se) | SearXNG-SE by itself                                              | [docker.io/aeshemi1/searxng-se:latest](https://hub.docker.com/r/aeshemi1/searxng-se) | [Dockerfile](https://github.com/aeshemi1/searxng-se/blob/master/Dockerfile)               |
 | [Valkey](https://github.com/valkey-io/valkey) | In-memory database                                             | [docker.io/valkey/valkey:8-alpine](https://hub.docker.com/r/valkey/valkey)        | [Dockerfile](https://github.com/valkey-io/valkey-container/blob/mainline/Dockerfile.template)             |
 
 ## How to use it
-There are two ways to host SearXNG. The first one doesn't require any prior knowledge about self-hosting and thus is recommended for beginners. It includes caddy as a reverse proxy and automatically deals with the TLS certificates for you. The second one is recommended for more advanced users that already have their own reverse proxy (e.g. Nginx, HAProxy, ...) and probably some other services running on their machine. The first few steps are the same for both installation methods however.
+SearXNG-SE is recommended for more advanced users that already have their own reverse proxy (e.g. Nginx, HAProxy, ...) and probably some other services running on their machine.
 
 1. [Install docker](https://docs.docker.com/install/)
-2. Get searxng-docker
+2. Get searxng-se-docker
   ```sh
   cd /usr/local
-  git clone https://github.com/searxng/searxng-docker.git
+  git clone https://github.com/aeshemi1/searxng-se-docker.git
   cd searxng-docker
   ```
-3. Edit the [.env](https://github.com/searxng/searxng-docker/blob/master/.env) file to set the hostname and an email
-4. Generate the secret key `sed -i "s|ultrasecretkey|$(openssl rand -hex 32)|g" searxng/settings.yml`
-5. Edit [searxng/settings.yml](https://github.com/searxng/searxng-docker/blob/master/searxng/settings.yml) according to your needs
+3. Generate the secret key `sed -i "s|ultrasecretkey|$(openssl rand -hex 32)|g" searxng/settings.yml`
+4. Edit [searxng/settings.yml](https://github.com/searxng/searxng-docker/blob/master/searxng/settings.yml) according to your needs
 
 > [!NOTE]
 > On the first run, you must remove `cap_drop: - ALL` from the `docker-compose.yaml` file for the `searxng` service to successfully create `/etc/searxng/uwsgi.ini`. This is necessary because the `cap_drop: - ALL` directive removes all capabilities, including those required for the creation of the `uwsgi.ini` file. After the first run, you should re-add `cap_drop: - ALL` to the `docker-compose.yaml` file for security reasons.
